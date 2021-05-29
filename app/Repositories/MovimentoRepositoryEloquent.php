@@ -42,6 +42,10 @@ class MovimentoRepositoryEloquent extends BaseRepository implements MovimentoRep
         return $this->create($dados);
     }
 
+    /**
+     *
+     * @SuppressWarnings(PHPMD)
+     */
     public function create(array $attributes)
     {
         $autorizaServices = app(AutorizaServices::class);

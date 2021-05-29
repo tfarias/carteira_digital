@@ -1,0 +1,16 @@
+name: Code analysis
+on:
+  pull_request:
+    branches:
+      - develop
+
+jobs:
+  static-code-analysis:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: PHPStan
+        uses: docker://tfariasg3/jakzal:phpqa7.4
+        with:
+          args: phpmd app/ text cleancode,codesize,controversial,design,naming,unusedcode
+

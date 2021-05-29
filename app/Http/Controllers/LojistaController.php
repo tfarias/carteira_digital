@@ -30,7 +30,7 @@ class LojistaController extends Controller
      * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function update(PessoaRequest $request){
-        $this->authorize('update_lojista', Pessoa::class);
+        $this->authorize('lojista', Pessoa::class);
         return $this->lojistaRepository->update($request->all(), auth()->user()->id);
     }
 

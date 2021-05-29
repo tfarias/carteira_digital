@@ -8,7 +8,14 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Hash;
 use Tymon\JWTAuth\Contracts\JWTSubject;
-
+/**
+ * @property int $id
+ * @property string $nome
+ * @property string $cpf_cnpj
+ * @property string $senha
+ * @property string $email
+ * @property int $tipo_pessoa_id
+ */
 class Pessoa extends Authenticatable  implements JWTSubject
 {
     use HasFactory, SoftDeletes, Notifiable;
@@ -37,15 +44,19 @@ class Pessoa extends Authenticatable  implements JWTSubject
         return $this->belongsTo(TipoPessoa::class);
     }
 
-    public function getNomeAttribute(){
+    protected function getNomeAttribute(){
         return ucwords($this->attributes['nome']);
     }
 
-    public function setSenhaAttribute($password){
+    /**
+     *
+     * @SuppressWarnings(PHPMD)
+     */
+    protected function setSenhaAttribute($password){
         return $this->attributes['senha'] = Hash::make($password);
     }
 
-    public function getPasswordAttribute(){
+    protected function getPasswordAttribute(){
         return $this->senha;
     }
 

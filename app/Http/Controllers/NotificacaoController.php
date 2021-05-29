@@ -10,21 +10,21 @@ class NotificacaoController extends Controller
     /**
      * @var NotificacaoRepository
      */
-    private $notificacaoRepository;
+    private $repository;
 
     /**
      * NotificacaoController constructor.
      */
-    public function __construct(NotificacaoRepository $notificacaoRepository)
+    public function __construct(NotificacaoRepository $repository)
     {
-        $this->notificacaoRepository = $notificacaoRepository;
+        $this->repository = $repository;
     }
 
     /**
      * @throws \Prettus\Repository\Exceptions\RepositoryException
      */
     public function index(){
-        $this->notificacaoRepository->pushCriteria(new NotificacoesCriteria);
-        return $this->notificacaoRepository->all();
+        $this->repository->pushCriteria(new NotificacoesCriteria);
+        return $this->repository->all();
     }
 }

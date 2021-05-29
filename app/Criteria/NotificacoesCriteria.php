@@ -20,6 +20,8 @@ class NotificacoesCriteria implements CriteriaInterface
      *
      * @return mixed
      */
+    /** @SuppressWarnings(PHPMD.UnusedFormalParameter) */
+
     public function apply($model, RepositoryInterface $repository)
     {
        return $model
