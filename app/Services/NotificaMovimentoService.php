@@ -8,8 +8,14 @@ use App\Criteria\MovimentoNotificacoesCriteria;
 use App\Models\Movimento;
 use App\Repositories\MovimentoRepository;
 use App\Repositories\NotificacaoRepository;
-use DB;
+use Illuminate\Support\Facades\DB;
 
+/**
+ * This will suppress all the PMD warnings in
+ * this class.
+ *
+ * @SuppressWarnings(PHPMD)
+ */
 class NotificaMovimentoService
 {
     /**

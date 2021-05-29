@@ -30,7 +30,7 @@ class ComunController extends Controller
      * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function update(PessoaRequest $request){
-        $this->authorize('update_comun', Pessoa::class);
+        $this->authorize('comun', Pessoa::class);
         return $this->comunRepository->update($request->all(), auth()->user()->id);
     }
 
