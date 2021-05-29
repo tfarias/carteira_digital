@@ -1,4 +1,4 @@
-name: build-carteira
+name: ci-carteira
 on:
   pull_request:
     branches:
