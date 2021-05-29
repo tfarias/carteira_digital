@@ -7,7 +7,11 @@ use App\Models\Traits\Currency;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-
+/**
+ * @property int $id
+ * @property int $pessoa_id
+ * @property string|double|numeric $saldo
+ */
 class Carteira extends Model
 {
     use HasFactory, SoftDeletes, Currency;
@@ -29,7 +33,10 @@ class Carteira extends Model
         return $this->hasMany(Movimento::class);
     }
 
-    public function setSaldoAttribute($saldo){
+    /**
+     * @param string|double|numeric $saldo
+     */
+    protected function setSaldoAttribute($saldo){
         $this->attributes['saldo'] = Currency::get_amount($saldo);
     }
 }

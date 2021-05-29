@@ -20,20 +20,21 @@ class Notifica extends Command
      * @var string
      */
     protected $description = 'Envia notificações de movimentos feitos';
+
     /**
      * @var NotificaMovimentoService
      */
-    private $notificaMovimentoService;
+    private $notificaService;
+
 
     /**
      * Create a new command instance.
-     *
      * @return void
      */
-    public function __construct(NotificaMovimentoService $notificaMovimentoService)
+    public function __construct(NotificaMovimentoService $notificaService)
     {
         parent::__construct();
-        $this->notificaMovimentoService = $notificaMovimentoService;
+        $this->notificaService = $notificaService;
     }
 
     /**
@@ -43,6 +44,6 @@ class Notifica extends Command
      */
     public function handle()
     {
-        $this->notificaMovimentoService->init();
+        $this->notificaService->init();
     }
 }

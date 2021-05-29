@@ -26,7 +26,7 @@ class Movimento extends Model
         'created' => \App\Events\MovimentoCarteira::class,
     ];
 
-    public function setValorAttribute($valor){
+    protected function setValorAttribute($valor){
         $this->attributes['valor'] = Currency::get_amount($valor);
     }
 

@@ -44,15 +44,15 @@ class Pessoa extends Authenticatable  implements JWTSubject
         return $this->belongsTo(TipoPessoa::class);
     }
 
-    public function getNomeAttribute(){
+    protected function getNomeAttribute(){
         return ucwords($this->attributes['nome']);
     }
 
-    public function setSenhaAttribute($password){
+    protected function setSenhaAttribute($password){
         return $this->attributes['senha'] = Hash::make($password);
     }
 
-    public function getPasswordAttribute(){
+    protected function getPasswordAttribute(){
         return $this->senha;
     }
 
