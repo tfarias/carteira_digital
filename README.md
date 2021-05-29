@@ -1,5 +1,10 @@
 ##Carteira Back End
 
+-  Desenvolvido com Framework Laravel
+```
+    Justificativa: Optei por utilizar o Laravel, pois é o framework que tenho mais experiência e gosto muito de utilizalo.
+     :)
+```
 ## Desafio
 
 -   [x] Para ambos tipos de usuário, precisamos do Nome Completo, CPF, e-mail e Senha. CPF/CNPJ e e-mails devem ser únicos no sistema. Sendo assim, seu sistema deve permitir apenas um cadastro com o mesmo CPF ou endereço de e-mail.
@@ -111,3 +116,4 @@ Após fazer o pull request da aplicação rodar os comandos
 - MongoExpress
       http://localhost:8081
 ```
+
