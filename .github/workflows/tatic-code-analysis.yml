@@ -12,13 +12,15 @@ jobs:
       - name: PHPStan
         uses: docker://jakzal/phpqa:php7.4
         with:
-          extensions: bcmath, pdo_mysql, zip, xdebug
+          extensions: bcmath, pdo_mysql, zip, xdebug, mongodb
           args: phpstan analyze app/ -l 1
       - name: PHP-CS-Fixer
-        uses: docker://jakzal/phpqa:php8.0-alpine
+        uses: docker://jakzal/phpqa:php7.4
         with:
+          extensions: bcmath, pdo_mysql, zip, xdebug, mongodb
           args: php-cs-fixer --dry-run --allow-risky=yes --no-interaction --ansi fix
       - name: Deptrac
-        uses: docker://jakzal/phpqa:php8.0-alpine
+        uses: docker://jakzal/phpqa:php7.4
         with:
+          extensions: bcmath, pdo_mysql, zip, xdebug, mongodb
           args: deptrac --no-interaction --ansi --formatter-graphviz-display=0
