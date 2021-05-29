@@ -108,6 +108,14 @@ Após fazer o pull request da aplicação rodar os comandos
   Insomnia_2021-05-28
 ```
 
+## Qualidade de Software
+
+```
+  Optei por utilizar o github action para fazer a validação da aplicação. 
+  Também bloquiei a main do repositório para receber updates somente através de pull request e com a validação do c.i
+  :)
+```
+
 ## Links da aplicação
 
 ```
