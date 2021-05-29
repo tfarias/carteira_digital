@@ -8,12 +8,7 @@ use App\Criteria\MovimentoNotificacoesCriteria;
 use App\Models\Movimento;
 use App\Repositories\MovimentoRepository;
 use App\Repositories\NotificacaoRepository;
-use Illuminate\Support\Facades\DB;
-/**
- * @method static void commit()
- * @method static void rollBack()
- * @method static void beginTransaction()
- */
+
 class NotificaMovimentoService
 {
     /**
@@ -44,7 +39,7 @@ class NotificaMovimentoService
     }
 
     /**
-     * @throws \Prettus\Repository\Exceptions\RepositoryException
+     * @throws \Prettus\Repository\Exceptions\RepositoryException|\GuzzleHttp\Exception\GuzzleException
      */
     public function init(){
         $this->movimentoRepository->pushCriteria(new MovimentoNotificacoesCriteria);
@@ -61,11 +56,12 @@ class NotificaMovimentoService
     /**
      * @param Movimento $movimento
      * @throws \GuzzleHttp\Exception\GuzzleException
+     *
      */
     public function notifica($movimento){
         $result = $this->checaServicoService->checar();
         if($result->message=="Success"){
-            DB::beginTransaction();
+            \Illuminate\Support\Facades\DB::beginTransaction();
             try {
                 $movimento->notificou = 'S';
                 $movimento->save();
@@ -73,9 +69,9 @@ class NotificaMovimentoService
                     'pessoa_id' => $movimento->destino->pessoa_id,
                     'mensagem' => "A quantida de {$movimento->valor} foi adicionado a sua carteira!"
                 ]);
-                DB::commit();
+                \Illuminate\Support\Facades\DB::commit();
             }catch (\Exception $e){
-                DB::rollback();
+                \Illuminate\Support\Facades\DB::rollback();
             }
         }
     }
