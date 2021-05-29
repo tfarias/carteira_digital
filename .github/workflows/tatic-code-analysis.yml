@@ -13,11 +13,4 @@ jobs:
         uses: docker://tfariasg3/jakzal:phpqa7.4
         with:
           args: phpmd app/ text cleancode,codesize,controversial,design,naming,unusedcode
-      - name: PHP-CS-Fixer
-        uses: docker://tfariasg3/jakzal:phpqa7.4
-        with:
-          args: php-cs-fixer --dry-run --allow-risky=yes --no-interaction --ansi fix
-      - name: Deptrac
-        uses: docker://tfariasg3/jakzal:phpqa7.4
-        with:
-          args: deptrac --no-interaction --ansi --formatter-graphviz-display=0
+
