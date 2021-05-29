@@ -27,7 +27,7 @@ class Movimento extends Model
     ];
 
     protected function setValorAttribute($valor){
-        $this->attributes['valor'] = Currency::get_amount($valor);
+        $this->attributes['valor'] = self::get_amount($valor);
     }
 
     public function origen(){

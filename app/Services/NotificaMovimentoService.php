@@ -8,6 +8,7 @@ use App\Criteria\MovimentoNotificacoesCriteria;
 use App\Models\Movimento;
 use App\Repositories\MovimentoRepository;
 use App\Repositories\NotificacaoRepository;
+use DB;
 
 class NotificaMovimentoService
 {
@@ -22,7 +23,8 @@ class NotificaMovimentoService
     /**
      * @var NotificacaoRepository
      */
-    private $notificacaoRepository;
+    private $notifyRepository;
+
 
     /**
      * NotificaMovimentoService constructor.
@@ -30,12 +32,12 @@ class NotificaMovimentoService
     public function __construct(
         ChecaServicoService $checaServicoService,
         MovimentoRepository $movimentoRepository,
-        NotificacaoRepository $notificacaoRepository
+        NotificacaoRepository $notifyRepository
     )
     {
         $this->checaServicoService = $checaServicoService;
         $this->movimentoRepository = $movimentoRepository;
-        $this->notificacaoRepository = $notificacaoRepository;
+        $this->notifyRepository = $notifyRepository;
     }
 
     /**
@@ -61,17 +63,17 @@ class NotificaMovimentoService
     public function notifica($movimento){
         $result = $this->checaServicoService->checar();
         if($result->message=="Success"){
-            \Illuminate\Support\Facades\DB::beginTransaction();
+            DB::beginTransaction();
             try {
                 $movimento->notificou = 'S';
                 $movimento->save();
-                $this->notificacaoRepository->create([
+                $this->notifyRepository->create([
                     'pessoa_id' => $movimento->destino->pessoa_id,
                     'mensagem' => "A quantida de {$movimento->valor} foi adicionado a sua carteira!"
                 ]);
-                \Illuminate\Support\Facades\DB::commit();
+                DB::commit();
             }catch (\Exception $e){
-                \Illuminate\Support\Facades\DB::rollback();
+                DB::rollback();
             }
         }
     }
