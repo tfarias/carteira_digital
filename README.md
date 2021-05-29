@@ -112,8 +112,10 @@ Após fazer o pull request da aplicação rodar os comandos
 
 ```
   Optei por utilizar o github action para fazer a validação da aplicação. 
-  Setei como default a branch develop e adicionei uma regra para que somente atualizações serão feiras na branch develop
-  através de pull request e com a validação do c.i que faz todos os tests da aplicação.
+  Defini como default a branch develop e adicionei uma regra para atualizar somente 
+  através de pull request e com a validação do C.I que faz todos os tests da aplicação.
+  Inclusive já adicinoei o teste de qualidade de software do jakzal/phpqa  diretamente a C.I do github action.
+  
   :)
 ```
 
