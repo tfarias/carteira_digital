@@ -1,0 +1,1 @@
+docker exec -it carteira_app php artisan schedule:run

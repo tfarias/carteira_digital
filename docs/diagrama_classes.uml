@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>PHP</ID>
+  <OriginalElement>/home/tiago/Projetos/testes/carteira/app/Models</OriginalElement>
+  <nodes>
+    <node x="50.12107870115574" y="-43.05008255365988">\App\Models\Lojistas</node>
+    <node x="331.46725371491465" y="143.8591084204732">\App\Models\Movimento</node>
+    <node x="367.46725371491465" y="-43.05008255365988">\App\Models\Comuns</node>
+    <node x="50.12107870115574" y="143.8591084204732">\App\Models\Carteira</node>
+    <node x="192.88937809576237" y="33.84920198128782">\App\Models\TipoPessoa</node>
+    <node x="216.88937809576237" y="-188.28618602091365">\App\Models\Pessoa</node>
+    <node x="186.88937809576237" y="255.9845899834893">\App\Models\Notificacao</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="\App\Models\Comuns" target="\App\Models\Pessoa" relationship="GENERALIZATION">
+      <point x="0.0" y="-18.0" />
+      <point x="421.46725371491465" y="-97.66813428728676" />
+      <point x="270.88937809576237" y="-97.66813428728676" />
+      <point x="0.0" y="18.0" />
+    </edge>
+    <edge source="\App\Models\Lojistas" target="\App\Models\Pessoa" relationship="GENERALIZATION">
+      <point x="0.0" y="-18.0" />
+      <point x="116.12107870115574" y="-97.66813428728676" />
+      <point x="270.88937809576237" y="-97.66813428728676" />
+      <point x="0.0" y="18.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic" zoom="0.472684703433923" showDependencies="false" x="2256.83874518437" y="852.1675839295543" />
+  <SelectedNodes>
+    <node>\App\Models\Notificacao</node>
+  </SelectedNodes>
+  <Categories />
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
