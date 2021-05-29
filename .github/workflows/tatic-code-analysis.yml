@@ -12,7 +12,7 @@ jobs:
       - name: PHPStan
         uses: docker://tfariasg3/jakzal:phpqa7.4
         with:
-          args: phpstan analyze app/ -l 1
+          args: phpmd app/ text cleancode,codesize,controversial,design,naming,unusedcode
       - name: PHP-CS-Fixer
         uses: docker://tfariasg3/jakzal:phpqa7.4
         with:
