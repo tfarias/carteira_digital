@@ -17,6 +17,7 @@ class AutorizadorPolicy
         if($pessoa->tipo_pessoa_id !== 1){
            throw new PolicyException("Lojista não pode fazer transferências");
         }
+        return true;
     }
 
     /**
@@ -26,6 +27,7 @@ class AutorizadorPolicy
         if($pessoa->tipo_pessoa_id !== 1){
             throw new PolicyException("This action is unauthorized.");
         }
+        return true;
     }
 
     /**
@@ -35,6 +37,7 @@ class AutorizadorPolicy
         if($pessoa->tipo_pessoa_id !== 2){
             throw new PolicyException("This action is unauthorized.");
         }
+        return true;
     }
 
 }
