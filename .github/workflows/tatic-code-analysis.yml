@@ -10,8 +10,9 @@ jobs:
     steps:
       - uses: actions/checkout@master
       - name: PHPStan
-        uses: docker://jakzal/phpqa:php8.0-alpine
+        uses: docker://jakzal/phpqa:php7.4
         with:
+          extensions: bcmath, pdo_mysql, zip, xdebug
           args: phpstan analyze app/ -l 1
       - name: PHP-CS-Fixer
         uses: docker://jakzal/phpqa:php8.0-alpine
