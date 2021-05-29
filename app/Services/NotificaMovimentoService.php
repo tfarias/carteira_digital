@@ -5,11 +5,15 @@ namespace App\Services;
 
 
 use App\Criteria\MovimentoNotificacoesCriteria;
-use App\Models\Notificacao;
+use App\Models\Movimento;
 use App\Repositories\MovimentoRepository;
 use App\Repositories\NotificacaoRepository;
 use Illuminate\Support\Facades\DB;
-
+/**
+ * @method static void commit()
+ * @method static void rollBack()
+ * @method static void beginTransaction()
+ */
 class NotificaMovimentoService
 {
     /**
@@ -53,6 +57,11 @@ class NotificaMovimentoService
         }
     }
 
+
+    /**
+     * @param Movimento $movimento
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
     public function notifica($movimento){
         $result = $this->checaServicoService->checar();
         if($result->message=="Success"){
