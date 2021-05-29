@@ -112,7 +112,8 @@ Após fazer o pull request da aplicação rodar os comandos
 
 ```
   Optei por utilizar o github action para fazer a validação da aplicação. 
-  Também bloquiei a main do repositório para receber updates somente através de pull request e com a validação do c.i
+  Setei como default a branch develop e adicionei uma regra para que somente atualizações serão feiras na branch develop
+  através de pull request e com a validação do c.i que faz todos os tests da aplicação.
   :)
 ```
 
