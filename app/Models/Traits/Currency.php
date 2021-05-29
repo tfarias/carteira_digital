@@ -4,7 +4,7 @@ namespace App\Models\Traits;
 
 trait Currency
 {
-   public static function get_amount($money){
+   public static function getAmount($money){
         try{
             $cleanString = preg_replace('/([^0-9\.,])/i', '', $money);
             $onlyNumbersString = preg_replace('/([^0-9])/i', '', $money);

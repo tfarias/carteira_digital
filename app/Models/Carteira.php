@@ -37,6 +37,6 @@ class Carteira extends Model
      * @param string|double|numeric $saldo
      */
     protected function setSaldoAttribute($saldo){
-        $this->attributes['saldo'] = self::get_amount($saldo);
+        $this->attributes['saldo'] = self::getAmount($saldo);
     }
 }

@@ -48,6 +48,10 @@ class Pessoa extends Authenticatable  implements JWTSubject
         return ucwords($this->attributes['nome']);
     }
 
+    /**
+     *
+     * @SuppressWarnings(PHPMD)
+     */
     protected function setSenhaAttribute($password){
         return $this->attributes['senha'] = Hash::make($password);
     }
