@@ -8,7 +8,14 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Hash;
 use Tymon\JWTAuth\Contracts\JWTSubject;
-
+/**
+ * @property int $id
+ * @property string $nome
+ * @property string $cpf_cnpj
+ * @property string $senha
+ * @property string $email
+ * @property int $tipo_pessoa_id
+ */
 class Pessoa extends Authenticatable  implements JWTSubject
 {
     use HasFactory, SoftDeletes, Notifiable;
