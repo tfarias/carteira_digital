@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Events\MovimentoCarteira;
 use App\Events\PessoaCreated;
 use App\Listeners\CreateCarteiraListener;
+use App\Listeners\CreateJobMovimento;
 use App\Listeners\UpdateCarteiraListener;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
@@ -30,7 +31,8 @@ class EventServiceProvider extends ServiceProvider
             CreateCarteiraListener::class
         ],
         MovimentoCarteira::class => [
-            UpdateCarteiraListener::class
+            UpdateCarteiraListener::class,
+            CreateJobMovimento::class
         ]
     ];
 

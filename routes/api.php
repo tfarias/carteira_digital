@@ -37,7 +37,10 @@ use Illuminate\Http\Request;
                 ApiRoute::get('saldo','CarteiraController@saldo')->name('carteira.saldo');
             });
 
-            ApiRoute::get('notificacoes', 'NotificacaoController@index')->name('notificacoes.index');
+            ApiRoute::group(['as' =>'notificacoes','prefix' => 'notificacoes'],function(){
+                ApiRoute::get('/','NotificacaoController@index')->name('notificacoes.index');
+                ApiRoute::get('all','NotificacaoController@all')->name('notificacoes.all');
+            });
 
         });
     });
