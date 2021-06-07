@@ -3,7 +3,12 @@
 namespace App\Listeners;
 
 use App\Events\MovimentoCarteira;
-
+/**
+ * This will suppress all the PMD warnings in
+ * this class.
+ *
+ * @SuppressWarnings(PHPMD)
+ */
 class CreateJobMovimento
 {
     /**
