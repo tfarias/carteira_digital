@@ -67,14 +67,17 @@ class NotificaMovimentoService
      *
      */
     public function notifica($movimento){
+
         $result = $this->checaServicoService->checar();
         if($result->message=="Success"){
+            $origen = $movimento->origen ? $movimento->origen->pessoa_id : null;
             DB::beginTransaction();
             try {
                 $movimento->notificou = 'S';
                 $movimento->save();
                 $this->notifyRepository->create([
-                    'pessoa_id' => $movimento->destino->pessoa_id,
+                    'pessoa_origen' => $origen,
+                    'pessoa_destino' => $movimento->destino->pessoa_id,
                     'mensagem' => "A quantida de {$movimento->valor} foi adicionado a sua carteira!"
                 ]);
                 DB::commit();

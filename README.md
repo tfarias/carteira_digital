@@ -48,6 +48,14 @@
     $ docker exec -it carteira_app php artisan schedule:run
     ou
     $ docker exec -it carteira_app php artisan send:notificacoes
+    
+    Afim de maximizar a performace na questão das notificações eu adicionei um job de envio de notificações
+    onde após a inserção na tabela de movimentação o event MovimentoCarteira é disparado e assim o listener 
+    CreateJobMovimento que está ouvindo cria um novo MovimentoJob que faz os envios das notificações
+    Para isso deve ser acionado o comando 
+    
+    $ docker exec -d carteira_app php artisan queue:work
+        
 
     A simulação da rotina é validada com o serviço ChecaServicoService
     app/Services/ChecaServicoService.php

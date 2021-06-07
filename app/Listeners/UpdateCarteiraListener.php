@@ -32,14 +32,14 @@ class UpdateCarteiraListener
             $movimento = $movimentoCarteira->movimento;
             if ($movimento->status === 'Autorizado') {
                 if (!empty($movimento->carteira_origen)) {
-                    $origen = $this->carteiraRepository->find($movimento->carteira_origen);
+                    $origen = $this->carteiraRepository->skipPresenter()->find($movimento->carteira_origen);
                     $saldo = $origen->saldo-=$movimento->valor;
                     $this->carteiraRepository->update([
                         'saldo' => $saldo
                     ],$origen->id);
 
                 }
-                $destino = $this->carteiraRepository->find($movimento->carteira_destino);
+                $destino = $this->carteiraRepository->skipPresenter()->find($movimento->carteira_destino);
                 $saldo = $destino->saldo+=$movimento->valor;
                 $this->carteiraRepository->update([
                     'saldo' => $saldo

@@ -27,4 +27,11 @@ class NotificacaoController extends Controller
         $this->repository->pushCriteria(new NotificacoesCriteria);
         return $this->repository->all();
     }
+
+    /**
+     * @return mixed
+     */
+    public function all(){
+        return $this->repository->all();
+    }
 }

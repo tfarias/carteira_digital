@@ -26,7 +26,8 @@ class DestinoRule implements Rule
      */
     public function passes($attribute, $value)
     {
-        return (int)auth()->user()->id !== (int)$value;
+        $carteira = auth()->user()->carteira();
+        return (int)$carteira->id !== (int)$value;
     }
 
     /**
