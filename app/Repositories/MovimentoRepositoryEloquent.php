@@ -36,7 +36,8 @@ class MovimentoRepositoryEloquent extends BaseRepository implements MovimentoRep
     }
 
 
-    public function transferir(array $dados){
+    public function transferir(array $dados)
+    {
         $carteira = auth()->user()->carteira();
         $dados['carteira_origen'] = $carteira->id;
         return $this->create($dados);
@@ -50,25 +51,25 @@ class MovimentoRepositoryEloquent extends BaseRepository implements MovimentoRep
     {
         $autorizaServices = app(AutorizaServices::class);
         DB::beginTransaction();
-        try{
+        try {
             //se a carteira de destino estiver vazia então estou adicionando saldo a minha carteira
             $attributes['carteira_destino'] = empty($attributes['carteira_destino']) ? auth()->user()->carteira()->id : $attributes['carteira_destino'];
             $attributes['status'] = $autorizaServices->autorizar()->message;
             $movimento = parent::create($attributes);
             //caso não ocorra nenhum erro no cadastro do movimento e da evento de atualizar a carteira finalizo a transação
             DB::commit();
-        }catch (\Exception $e){
+        } catch (\Exception $e) {
             DB::rollback();
             $attributes['status'] = $e->getMessage();
             $movimento = parent::create($attributes);
         }
 
-       return [
-           'valor' => $movimento->valor,
-           'origen' => $movimento->carteira_origen,
-           'destino' => $movimento->carteira_destino,
-           'status' => $movimento->status
-       ];
+        return [
+            'valor' => $movimento->valor,
+            'origen' => $movimento->carteira_origen,
+            'destino' => $movimento->carteira_destino,
+            'status' => $movimento->status
+        ];
     }
 
 
