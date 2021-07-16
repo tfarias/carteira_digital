@@ -4,6 +4,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+/**
+ * This will suppress all the PMD warnings in
+ * this class.
+ *
+ * @SuppressWarnings(PHPMD)
+ */
 class AuthController extends Controller
 {
     /**
@@ -27,7 +33,8 @@ class AuthController extends Controller
     {
         $credentials = $request->only('email', 'password');
 
-        if ($token = Auth::guard('api')->attempt($credentials)) {
+        $token = $this->guard()->attempt($credentials);
+        if ($token) {
             return $this->respondWithToken($token);
         }
 

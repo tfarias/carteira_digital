@@ -4,6 +4,7 @@
 namespace App\Services;
 
 
+use Exception;
 use GuzzleHttp\Client;
 
 class AutorizaServices
@@ -17,7 +18,7 @@ class AutorizaServices
         $res = $client->request('GET', config('services.api.autorizador'));
         $result = json_decode($res->getBody()->getContents());
         if($result->message !== "Autorizado"){
-            throw new \Exception($result->message);
+            throw new Exception($result->message);
         }
         return $result;
     }

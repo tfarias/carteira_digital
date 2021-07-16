@@ -23,12 +23,12 @@ class PessoaRequest extends FormRequest
      */
     public function rules()
     {
-        $user_id = !empty(auth()->user()) ? auth()->user()->id : null;
-        $required = empty($user_id) ? "required": "nullable";
+        $userId = !empty(auth()->user()) ? auth()->user()->id : null;
+        $required = empty($userId) ? "required": "nullable";
         return [
-            "cpf_cnpj" => "$required|cpfcnpj|unique:pessoa,cpf_cnpj,$user_id",
+            "cpf_cnpj" => "$required|cpfcnpj|unique:pessoa,cpf_cnpj,$userId",
             "nome" => "$required",
-            "email" => "$required|email|unique:pessoa,email,$user_id",
+            "email" => "$required|email|unique:pessoa,email,$userId",
             "senha" => "$required"
         ];
     }

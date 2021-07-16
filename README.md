@@ -1,5 +1,10 @@
 ##Carteira Back End
 
+-  Desenvolvido com Framework Laravel
+```
+    Justificativa: Optei por utilizar o Laravel, pois é o framework que tenho mais experiência e gosto muito de utilizalo.
+     :)
+```
 ## Desafio
 
 -   [x] Para ambos tipos de usuário, precisamos do Nome Completo, CPF, e-mail e Senha. CPF/CNPJ e e-mails devem ser únicos no sistema. Sendo assim, seu sistema deve permitir apenas um cadastro com o mesmo CPF ou endereço de e-mail.
@@ -43,6 +48,14 @@
     $ docker exec -it carteira_app php artisan schedule:run
     ou
     $ docker exec -it carteira_app php artisan send:notificacoes
+    
+    Afim de maximizar a performace na questão das notificações eu adicionei um job de envio de notificações
+    onde após a inserção na tabela de movimentação o event MovimentoCarteira é disparado e assim o listener 
+    CreateJobMovimento que está ouvindo cria um novo MovimentoJob que faz os envios das notificações
+    Para isso deve ser acionado o comando 
+    
+    $ docker exec -d carteira_app php artisan queue:work
+        
 
     A simulação da rotina é validada com o serviço ChecaServicoService
     app/Services/ChecaServicoService.php
@@ -103,6 +116,17 @@ Após fazer o pull request da aplicação rodar os comandos
   Insomnia_2021-05-28
 ```
 
+## Qualidade de Software
+
+```
+  Optei por utilizar o github action para fazer a validação da aplicação. 
+  Defini como default a branch develop e adicionei uma regra para atualizar somente 
+  através de pull request e com a validação do C.I que faz todos os tests da aplicação.
+  Inclusive já adicinoei o teste de qualidade de software do jakzal/phpqa  diretamente a C.I do github action.
+  
+  :)
+```
+
 ## Links da aplicação
 
 ```
@@ -111,3 +135,4 @@ Após fazer o pull request da aplicação rodar os comandos
 - MongoExpress
       http://localhost:8081
 ```
+

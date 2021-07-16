@@ -20,10 +20,12 @@ class NotificacoesCriteria implements CriteriaInterface
      *
      * @return mixed
      */
+    /** @SuppressWarnings(PHPMD.UnusedFormalParameter) */
+
     public function apply($model, RepositoryInterface $repository)
     {
        return $model
-            ->where('pessoa_id',auth()->user()->id)
+            ->where('pessoa_destino',auth()->user()->id)
             ->orderBy('created_at','DESC');
 
     }

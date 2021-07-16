@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\Carteira;
+use App\Presenters\CarteiraPresenter;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
 
@@ -36,5 +37,9 @@ class CarteiraRepositoryEloquent extends BaseRepository implements CarteiraRepos
         $this->pushCriteria(app(RequestCriteria::class));
     }
 
+    public function presenter()
+    {
+        return CarteiraPresenter::class;
+    }
 
 }

@@ -22,10 +22,12 @@ class DestinoRule implements Rule
      * @param  string  $attribute
      * @param  mixed  $value
      * @return bool
+     * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
     public function passes($attribute, $value)
     {
-        return (int)auth()->user()->id !== (int)$value;
+        $carteira = auth()->user()->carteira();
+        return (int)$carteira->id !== (int)$value;
     }
 
     /**

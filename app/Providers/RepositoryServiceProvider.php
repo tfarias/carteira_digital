@@ -14,7 +14,12 @@ use App\Repositories\NotificacaoRepository;
 use App\Repositories\NotificacaoRepositoryEloquent;
 use Illuminate\Support\ServiceProvider;
 
-
+/**
+ * This will suppress all the PMD warnings in
+ * this class.
+ *
+ * @SuppressWarnings(PHPMD)
+ */
 class RepositoryServiceProvider extends ServiceProvider
 {
     /**

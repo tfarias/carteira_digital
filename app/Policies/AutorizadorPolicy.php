@@ -17,24 +17,27 @@ class AutorizadorPolicy
         if($pessoa->tipo_pessoa_id !== 1){
            throw new PolicyException("Lojista não pode fazer transferências");
         }
+        return true;
     }
 
     /**
      * @throws PolicyException
      */
-    public function update_comun(Pessoa $pessoa){
+    public function comun(Pessoa $pessoa){
         if($pessoa->tipo_pessoa_id !== 1){
             throw new PolicyException("This action is unauthorized.");
         }
+        return true;
     }
 
     /**
      * @throws PolicyException
      */
-    public function update_lojista(Pessoa $pessoa){
+    public function lojista(Pessoa $pessoa){
         if($pessoa->tipo_pessoa_id !== 2){
             throw new PolicyException("This action is unauthorized.");
         }
+        return true;
     }
 
 }

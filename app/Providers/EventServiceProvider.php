@@ -5,11 +5,17 @@ namespace App\Providers;
 use App\Events\MovimentoCarteira;
 use App\Events\PessoaCreated;
 use App\Listeners\CreateCarteiraListener;
+use App\Listeners\CreateJobMovimento;
 use App\Listeners\UpdateCarteiraListener;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
-
+/**
+ * This will suppress all the PMD warnings in
+ * this class.
+ *
+ * @SuppressWarnings(PHPMD)
+ */
 class EventServiceProvider extends ServiceProvider
 {
     /**
@@ -25,7 +31,8 @@ class EventServiceProvider extends ServiceProvider
             CreateCarteiraListener::class
         ],
         MovimentoCarteira::class => [
-            UpdateCarteiraListener::class
+            UpdateCarteiraListener::class,
+            CreateJobMovimento::class
         ]
     ];
 
